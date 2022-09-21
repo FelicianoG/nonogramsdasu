@@ -1,9 +1,33 @@
 import Square from "./Square";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import arrDenester from "../utils";
 
-export default function Grid({ rowNum = 3, columnNum = 3 }) {
+export default function Grid({
+  winBoard = [
+    [false, true, false],
+    [false, true, false],
+    [true, true, true],
+  ],
+  size = 400,
+  rowNum = 3,
+  columnNum = 3,
+}) {
+  const GRID_STYLE = {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "red",
+    flexDirection: "column",
+    width: `${size}px`,
+    height: `${size}px`,
+  };
+
   const ROW_STYLE = {
     display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+    height: `${size / rowNum}px`,
   };
   const initialColumns = [];
   for (let i = 0; i < columnNum; i++) {
@@ -14,55 +38,43 @@ export default function Grid({ rowNum = 3, columnNum = 3 }) {
     dimension.push([...initialColumns]);
   }
 
-  const [board, setBoard] = useState([
-    [false, false, false],
-    [false, false, false],
-    [false, false, false],
-  ]);
-  const [pencil, setPencil] = useState(true);
-
-  document.addEventListener("keydown", () => {
-    setPencil((prev) => !prev);
-  });
+  const [board, setBoard] = useState(dimension);
 
   function handleRow(row, column) {
     setBoard((prev) => {
-      let arr = [...prev];
-      arr[row][column] = pencil;
-      return [...arr];
+      const arr = arrDenester(prev);
+      // arr[row][column] = !prev[row][column];
+      arr[row][column] = true;
+      return arrDenester([...arr]);
     });
   }
 
   return (
     <>
-      {pencil ? (
-        <>
-          <h3>Pencil Selected</h3>
-          <h4>Press any key to select Eraser</h4>
-        </>
-      ) : (
-        <>
-          <h3>Eraser Selected</h3>
-          <h4>Press any key to select Pencil</h4>
-        </>
-      )}
-      {board.map((arr, i) => {
-        return (
-          <div key={i} style={ROW_STYLE}>
-            {arr.map((square, j) => {
-              return (
-                <Square
-                  key={`${i}${j}`}
-                  row={i}
-                  column={j}
-                  handleRow={handleRow}
-                  marked={board[i][j]}
-                />
-              );
-            })}
-          </div>
-        );
-      })}
+      {JSON.stringify(board) === JSON.stringify(winBoard) ? (
+        <h1>You win!</h1>
+      ) : null}
+      <div style={GRID_STYLE}>
+        {board.map((arr, i) => {
+          return (
+            <div key={i} style={ROW_STYLE}>
+              {arr.map((square, j) => {
+                return (
+                  <Square
+                    gridSize={size}
+                    resolution={rowNum}
+                    key={`${i}${j}`}
+                    row={i}
+                    column={j}
+                    handleRow={handleRow}
+                    marked={board[i][j]}
+                  />
+                );
+              })}
+            </div>
+          );
+        })}
+      </div>
     </>
   );
 }
