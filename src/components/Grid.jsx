@@ -1,7 +1,7 @@
 import Square from "./Square";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-export default function Grid({ rowNum = 4, columnNum = 4 }) {
+export default function Grid({ rowNum = 3, columnNum = 3 }) {
   const ROW_STYLE = {
     display: "flex",
   };
@@ -11,24 +11,45 @@ export default function Grid({ rowNum = 4, columnNum = 4 }) {
   }
   const dimension = [];
   for (let j = 0; j < rowNum; j++) {
-    dimension.push(initialColumns);
+    dimension.push([...initialColumns]);
   }
 
-  const [board, setBoard] = useState(dimension);
+  const [board, setBoard] = useState([
+    [false, false, false],
+    [false, false, false],
+    [false, false, false],
+  ]);
+  const [pencil, setPencil] = useState(true);
 
-  function handleRow(column, row) {
+  document.addEventListener("keydown", () => {
+    setPencil((prev) => !prev);
+  });
+
+  function handleRow(row, column) {
     setBoard((prev) => {
-      return prev;
+      let arr = [...prev];
+      arr[row][column] = pencil;
+      return [...arr];
     });
   }
 
   return (
     <>
+      {pencil ? (
+        <>
+          <h3>Pencil Selected</h3>
+          <h4>Press any key to select Eraser</h4>
+        </>
+      ) : (
+        <>
+          <h3>Eraser Selected</h3>
+          <h4>Press any key to select Pencil</h4>
+        </>
+      )}
       {board.map((arr, i) => {
         return (
           <div key={i} style={ROW_STYLE}>
             {arr.map((square, j) => {
-              console.log(i, j, board[i][j]);
               return (
                 <Square
                   key={`${i}${j}`}

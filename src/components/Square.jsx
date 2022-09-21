@@ -11,7 +11,7 @@ export default function Square({ marked, column, handleRow, row }) {
 
   return (
     <div
-      onClick={() => handleRow(column, row)}
+      onClick={() => handleRow(row, column)}
       style={marked ? { ...SQUARE_STYLE, ...MARKED } : { ...SQUARE_STYLE }}
     ></div>
   );
