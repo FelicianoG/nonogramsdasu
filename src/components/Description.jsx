@@ -1,8 +1,10 @@
 import { rowColumnMaker } from "../utils";
 import Grid from "./Grid";
 import ColRow from "./ColRow";
+import RulesDisplay from "./RulesDisplay";
 
 export default function Description({
+  win,
   winBoard,
   size = 200,
   board,
@@ -11,7 +13,7 @@ export default function Description({
   columnNum,
 }) {
   const DESC_STYLES = {
-    backgroundColor: "#003",
+    backgroundColor: "#008080",
     outline: "white solid 2px",
   };
 
@@ -25,7 +27,6 @@ export default function Description({
     alignItems: "flex-end",
   };
   const ROW_STYLES = {
-    color: "red",
     width: `${size}px`,
     height: `${size}px`,
     display: "flex",
@@ -36,7 +37,9 @@ export default function Description({
   return (
     <div style={DESC_STYLES}>
       <div style={{ display: "flex" }}>
-        <div style={COLUMN_STYLES}></div>
+        <div style={COLUMN_STYLES}>
+          <RulesDisplay size={size} win={win} />
+        </div>
         <div style={COLUMN_STYLES}>
           <ColRow
             size={size}

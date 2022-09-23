@@ -41,10 +41,5 @@ export default function Logic({ children, winBoard }) {
     winBoard,
     win,
   });
-  return (
-    <div>
-      {win ? <h1>You win!</h1> : null}
-      {element}
-    </div>
-  );
+  return <div>{element}</div>;
 }
