@@ -6,7 +6,6 @@ export default function Square({
   row,
   resolution,
 }) {
-  console.log(gridSize / resolution);
   const SQUARE_STYLE = {
     width: `${gridSize / resolution}px`,
     height: `${gridSize / resolution}px`,
