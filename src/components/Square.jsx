@@ -1,12 +1,20 @@
-export default function Square({ marked, column, handleRow, row }) {
+export default function Square({
+  gridSize,
+  marked,
+  column,
+  handleRow,
+  row,
+  resolution,
+}) {
   const SQUARE_STYLE = {
-    width: "30px",
-    height: "30px",
-    backgroundColor: "gray",
-    border: "solid white 2px",
+    width: `${gridSize / resolution}px`,
+    height: `${gridSize / resolution}px`,
+    backgroundColor: "#444",
+    outline: "solid black 1px",
+    // userSelect: "none",
   };
   const MARKED = {
-    backgroundColor: "red",
+    backgroundColor: "#BBB",
   };
 
   return (
