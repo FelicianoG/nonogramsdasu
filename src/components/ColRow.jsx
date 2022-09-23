@@ -19,10 +19,12 @@ export default function ColRow({ size, arr, isCol, columnNum, rowNum }) {
   };
 
   const ROW_STYLES = {
-    outline: "green solid 1px",
     width: `${size / divisionSize}px`,
     height: `${size / divisionSize}px`,
-    fontSize: `${(size - 100) / divisionSize}px`,
+    fontSize:
+      size > 100
+        ? `${(size - 10) / divisionSize}px`
+        : `${size / divisionSize}px`,
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -37,7 +39,7 @@ export default function ColRow({ size, arr, isCol, columnNum, rowNum }) {
             style={{
               width: "100%",
               height: "100%",
-              outline: "white solid 1px",
+              outline: "black solid 1px",
               flexGrow: 1,
               display: "flex",
               flexDirection: !isCol ? "row" : "column",

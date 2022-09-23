@@ -3,19 +3,16 @@ import Grid from "./Grid";
 import ColRow from "./ColRow";
 
 export default function Description({
-  winBoard = [
-    [false, true, false],
-    [false, true, false],
-    [true, true, true],
-  ],
+  winBoard,
   size = 200,
+  board,
+  handleRow,
+  rowNum,
+  columnNum,
 }) {
-  const rowNum = winBoard.length;
-  const columnNum = winBoard[0].length;
-
   const DESC_STYLES = {
     backgroundColor: "#003",
-    outline: "2px green solid",
+    outline: "white solid 2px",
   };
 
   const [winRow, winColumn] = rowColumnMaker(winBoard);
@@ -61,6 +58,8 @@ export default function Description({
           />
         </div>
         <Grid
+          board={board}
+          handleRow={handleRow}
           size={size}
           winBoard={winBoard}
           rowNum={rowNum}

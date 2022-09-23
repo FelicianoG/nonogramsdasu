@@ -7,9 +7,12 @@ export default function Grid({
   size = 200,
   rowNum = 3,
   columnNum = 3,
+  board,
+  handleRow,
 }) {
   const GRID_STYLE = {
     display: "flex",
+    outline: "black solid 1px",
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "column",
@@ -24,24 +27,6 @@ export default function Grid({
     width: "100%",
     height: `${size / rowNum}px`,
   };
-  const initialColumns = [];
-  for (let i = 0; i < columnNum; i++) {
-    initialColumns.push(false);
-  }
-  const dimension = [];
-  for (let j = 0; j < rowNum; j++) {
-    dimension.push([...initialColumns]);
-  }
-
-  const [board, setBoard] = useState(dimension);
-
-  function handleRow(row, column) {
-    setBoard((prev) => {
-      const arr = arrDenester(prev);
-      arr[row][column] = true;
-      return arrDenester([...arr]);
-    });
-  }
 
   return (
     <>
