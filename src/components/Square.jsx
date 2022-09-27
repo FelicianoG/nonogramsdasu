@@ -2,7 +2,7 @@ export default function Square({
   gridSize,
   marked,
   column,
-  handleRow,
+  handleBoard,
   row,
   resolution,
 }) {
@@ -19,7 +19,7 @@ export default function Square({
 
   return (
     <div
-      onClick={() => handleRow(row, column)}
+      onClick={() => handleBoard(row, column)}
       style={marked ? { ...SQUARE_STYLE, ...MARKED } : { ...SQUARE_STYLE }}
     ></div>
   );

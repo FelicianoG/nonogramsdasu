@@ -1,7 +1,27 @@
-import { cloneElement, useState } from "react";
+import { cloneElement, useState, useEffect } from "react";
 import arrDenester from "../utils";
 
 export default function Logic({ children, winBoard }) {
+  const [zoom, setZoom] = useState(200);
+  const size = zoom;
+  useEffect(() => {
+    document.addEventListener("keydown", (e) => {
+      switch (e.key) {
+        case "w": {
+          setZoom((prev) => prev + 10);
+          break;
+        }
+        case "s": {
+          setZoom((prev) => prev - 10);
+          break;
+        }
+        default: {
+          return;
+        }
+      }
+    });
+  }, []);
+
   const initialColumns = [];
   const rowNum = winBoard.length;
   const columnNum = winBoard[0].length;
@@ -25,7 +45,7 @@ export default function Logic({ children, winBoard }) {
     }
   });
 
-  function handleRow(row, column) {
+  function handleBoard(row, column) {
     setBoard((prev) => {
       const arr = arrDenester(prev);
       arr[row][column] = temp;
@@ -34,12 +54,13 @@ export default function Logic({ children, winBoard }) {
     });
   }
   const element = cloneElement(children, {
-    handleRow,
+    handleBoard,
     board,
     rowNum,
     columnNum,
     winBoard,
     win,
+    size,
   });
   return <div>{element}</div>;
 }

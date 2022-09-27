@@ -8,7 +8,7 @@ export default function Grid({
   rowNum = 3,
   columnNum = 3,
   board,
-  handleRow,
+  handleBoard,
 }) {
   const GRID_STYLE = {
     display: "flex",
@@ -42,7 +42,7 @@ export default function Grid({
                     key={`${i}${j}`}
                     row={i}
                     column={j}
-                    handleRow={handleRow}
+                    handleBoard={handleBoard}
                     marked={board[i][j]}
                   />
                 );

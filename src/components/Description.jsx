@@ -8,7 +8,7 @@ export default function Description({
   winBoard,
   size = 200,
   board,
-  handleRow,
+  handleBoard,
   rowNum,
   columnNum,
 }) {
@@ -62,7 +62,7 @@ export default function Description({
         </div>
         <Grid
           board={board}
-          handleRow={handleRow}
+          handleBoard={handleBoard}
           size={size}
           winBoard={winBoard}
           rowNum={rowNum}
