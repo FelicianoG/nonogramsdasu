@@ -11,6 +11,7 @@ export default function Square({
     height: `${gridSize / resolution}px`,
     backgroundColor: "#444",
     outline: "solid black 1px",
+    borderRadius: "25%",
     // userSelect: "none",
   };
   const MARKED = {

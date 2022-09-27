@@ -11,6 +11,7 @@ export default function Grid({
   handleBoard,
 }) {
   const GRID_STYLE = {
+    backgroundColor: "#444",
     display: "flex",
     outline: "black solid 1px",
     justifyContent: "center",
