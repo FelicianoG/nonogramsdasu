@@ -1,5 +1,5 @@
 import React from "react";
-import { arrayToBlocks } from "../utils";
+import { arrayToBlocks, colorTheme } from "../utils";
 
 export default function ColRow({ size, arr, isCol, columnNum, rowNum }) {
   console.log(columnNum);
@@ -9,7 +9,7 @@ export default function ColRow({ size, arr, isCol, columnNum, rowNum }) {
   console.log(divisionSize);
 
   const COLROW_STYLES = {
-    backgroundColor: "#555",
+    backgroundColor: colorTheme.main,
     width: `${size}px`,
     height: `${size}px`,
     display: "flex",
@@ -39,7 +39,7 @@ export default function ColRow({ size, arr, isCol, columnNum, rowNum }) {
             style={{
               width: "100%",
               height: "100%",
-              outline: "black solid 1px",
+              outline: `${colorTheme.black} solid 1px`,
               flexGrow: 1,
               display: "flex",
               flexDirection: !isCol ? "row" : "column",

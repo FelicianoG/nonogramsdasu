@@ -1,6 +1,4 @@
-import React from "react";
-
-// boolean win true you win false las reglas
+import { colorTheme } from "../utils";
 
 export default function RulesDisplay({ size, win }) {
   const fontSize = size / 10;
@@ -12,6 +10,7 @@ export default function RulesDisplay({ size, win }) {
       ) : (
         <div
           style={{
+            color: colorTheme.white,
             fontSize: `${fontSize}px`,
             display: "flex",
             flexDirection: "column",

@@ -1,4 +1,4 @@
-import { rowColumnMaker } from "../utils";
+import { rowColumnMaker, colorTheme } from "../utils";
 import Grid from "./Grid";
 import ColRow from "./ColRow";
 import RulesDisplay from "./RulesDisplay";
@@ -13,8 +13,9 @@ export default function Description({
   columnNum,
 }) {
   const DESC_STYLES = {
-    backgroundColor: "#008080",
-    outline: "white solid 2px",
+    backgroundColor: colorTheme.accent,
+    border: `${colorTheme.white} solid 4px`,
+    color: colorTheme.white,
   };
 
   const [winRow, winColumn] = rowColumnMaker(winBoard);

@@ -1,6 +1,5 @@
 import Square from "./Square";
-import { useState } from "react";
-import arrDenester from "../utils";
+import { colorTheme } from "../utils";
 
 export default function Grid({
   winBoard,
@@ -11,9 +10,9 @@ export default function Grid({
   handleBoard,
 }) {
   const GRID_STYLE = {
-    backgroundColor: "#444",
+    backgroundColor: colorTheme.middle,
     display: "flex",
-    outline: "black solid 1px",
+    outline: `${colorTheme.black} solid 1px`,
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "column",
@@ -42,6 +41,8 @@ export default function Grid({
                     resolution={rowNum}
                     key={`${i}${j}`}
                     row={i}
+                    top={i % 5 === 0 && i !== 0}
+                    left={j % 5 === 0 && j !== 0}
                     column={j}
                     handleBoard={handleBoard}
                     marked={board[i][j]}
