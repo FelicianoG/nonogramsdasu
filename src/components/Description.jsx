@@ -14,7 +14,6 @@ export default function Description({
 }) {
   const DESC_STYLES = {
     backgroundColor: colorTheme.accent,
-    border: `${colorTheme.white} solid 4px`,
     color: colorTheme.white,
   };
 

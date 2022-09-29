@@ -22,31 +22,30 @@ export default function ColRow({ size, arr, isCol, columnNum, rowNum }) {
     width: `${size / divisionSize}px`,
     height: `${size / divisionSize}px`,
     fontSize:
-      size > 100
-        ? `${(size - 10) / divisionSize}px`
-        : `${size / divisionSize}px`,
+      size > 200
+        ? `${(size - 50) / divisionSize}px`
+        : `${(size - 25) / divisionSize}px`,
     display: "flex",
     justifyContent: "center",
+    alignItems: "flex-end",
+  };
+
+  const COL_STYLES = {
+    width: "100%",
+    height: "100%",
+    flexGrow: 1,
+    display: "flex",
+    flexDirection: !isCol ? "row" : "column",
+    justifyContent: "flex-end",
     alignItems: "center",
+    boxSizing: "border-box",
   };
 
   return (
     <div style={COLROW_STYLES}>
       {arr.map((a, i) => {
         return (
-          <div
-            key={i}
-            style={{
-              width: "100%",
-              height: "100%",
-              outline: `${colorTheme.black} solid 1px`,
-              flexGrow: 1,
-              display: "flex",
-              flexDirection: !isCol ? "row" : "column",
-              justifyContent: "flex-end",
-              alignItems: "center",
-            }}
-          >
+          <div key={i} style={COL_STYLES}>
             {arrayToBlocks(a).map((b, j) => (
               <div key={j} style={ROW_STYLES}>
                 {b}

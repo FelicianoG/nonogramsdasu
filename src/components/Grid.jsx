@@ -12,7 +12,6 @@ export default function Grid({
   const GRID_STYLE = {
     backgroundColor: colorTheme.middle,
     display: "flex",
-    outline: `${colorTheme.black} solid 1px`,
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "column",

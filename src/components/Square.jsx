@@ -16,7 +16,7 @@ export default function Square({
     width: `${gridSize / resolution}px`,
     height: `${gridSize / resolution}px`,
     backgroundColor: colorTheme.middle,
-    border: `${colorTheme.black} solid 1px`,
+    border: `${colorTheme.black} solid .1px`,
     boxSizing: "border-box",
   };
 
