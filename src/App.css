@@ -27,22 +27,24 @@ html {
 }
 
 .col {
-  border: #008080 0.1px solid;
-  width: 10px;
+  border: #007070 0.1px solid;
+  width: 0.6rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
   box-sizing: border-box;
+  text-align: center;
 }
 .row {
-  border: #80007c 0.1px solid;
-  height: 10px;
+  border: #007070 0.1px solid;
+  height: 0.6rem;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
   box-sizing: border-box;
+  text-align: center;
 }
 
 .board {
@@ -71,3 +73,48 @@ html {
   justify-content: center;
   font-size: calc(10px + 2vmin);
 }
+.number {
+  padding: 2px;
+  font-size: 0.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+.square {
+  width: 0.6rem;
+  height: 0.6rem;
+  background-color: var(--middle-color);
+  border: var(--black-color) solid 0.1px;
+  box-sizing: "border-box";
+}
+.marked {
+  background-color: var(--marked-color);
+}
+.top {
+  border-top-color: var(--accent-color);
+}
+.bot {
+  border-bottom-color: var(--accent-color);
+}
+.left {
+  border-left-color: var(--accent-color);
+}
+.right {
+  border-right-color: var(--accent-color);
+}
+.grid {
+  background-color: var(--middle-color);
+  display: "flex";
+  justify-content: "center";
+  align-items: "center";
+  flex-direction: "column";
+  /* width: 0.6rem;
+  height: 0.6rem; */
+}
+/* .grid-row {
+  display: "flex";
+  justify-content: "center";
+  align-items: "center";
+  width: 192px;
+  height: 0.6rem;
+} */

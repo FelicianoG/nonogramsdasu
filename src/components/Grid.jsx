@@ -9,16 +9,6 @@ export default function Grid({
   board,
   handleBoard,
 }) {
-  const GRID_STYLE = {
-    backgroundColor: colorTheme.middle,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "column",
-    width: `${size}px`,
-    height: `${size}px`,
-  };
-
   const ROW_STYLE = {
     display: "flex",
     justifyContent: "center",
@@ -29,10 +19,10 @@ export default function Grid({
 
   return (
     <>
-      <div style={GRID_STYLE}>
+      <div className="grid">
         {board.map((arr, i) => {
           return (
-            <div key={i} style={ROW_STYLE}>
+            <div key={i} className={"grid-row"} style={ROW_STYLE}>
               {arr.map((square, j) => {
                 return (
                   <Square
