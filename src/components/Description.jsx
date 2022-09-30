@@ -1,4 +1,4 @@
-import { rowColumnMaker, colorTheme } from "../utils";
+import { rowColumnMaker } from "../utils";
 import Grid from "./Grid";
 import ColRow from "./ColRow";
 import RulesDisplay from "./RulesDisplay";
@@ -12,54 +12,40 @@ export default function Description({
   rowNum,
   columnNum,
 }) {
-  const DESC_STYLES = {
-    backgroundColor: colorTheme.accent,
-    color: colorTheme.white,
-  };
-
   const [winRow, winColumn] = rowColumnMaker(winBoard);
 
-  const COLUMN_STYLES = {
-    width: `${size}px`,
-    height: `${size}px`,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "flex-end",
-  };
-  const ROW_STYLES = {
-    width: `${size}px`,
-    height: `${size}px`,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  };
-
   return (
-    <div style={DESC_STYLES}>
-      <div style={{ display: "flex" }}>
-        <div style={COLUMN_STYLES}>
-          <RulesDisplay size={size} win={win} />
-        </div>
-        <div style={COLUMN_STYLES}>
-          <ColRow
-            size={size}
-            arr={winColumn}
-            isCol={true}
-            rowNum={rowNum}
-            columnNum={columnNum}
-          />
-        </div>
+    <div className="board">
+      <div className="board-top-column">
+        {/* <RulesDisplay size={size} win={win} /> */}
+        {/* reemplazar esto de abajo!!! */}
+        <h8
+          style={{
+            display: "flex",
+            width: "100%",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          N
+        </h8>
+        <ColRow
+          size={size}
+          arr={winColumn}
+          isCol={true}
+          rowNum={rowNum}
+          columnNum={columnNum}
+        />
       </div>
-      <div style={{ display: "flex" }}>
-        <div style={ROW_STYLES}>
-          <ColRow
-            rowNum={rowNum}
-            columnNum={columnNum}
-            size={size}
-            arr={winRow}
-            isCol={false}
-          />
-        </div>
+      <div className="board-bot-column">
+        <ColRow
+          rowNum={rowNum}
+          columnNum={columnNum}
+          size={size}
+          arr={winRow}
+          isCol={false}
+        />
         <Grid
           board={board}
           handleBoard={handleBoard}

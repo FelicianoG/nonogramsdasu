@@ -1,53 +1,27 @@
 import React from "react";
-import { arrayToBlocks, colorTheme } from "../utils";
+import { arrayToBlocks } from "../utils";
 
 export default function ColRow({ size, arr, isCol, columnNum, rowNum }) {
-  console.log(columnNum);
-  console.log(rowNum);
-
   const divisionSize = isCol ? columnNum : rowNum;
-  console.log(divisionSize);
-
-  const COLROW_STYLES = {
-    backgroundColor: colorTheme.main,
-    width: `${size}px`,
-    height: `${size}px`,
-    display: "flex",
-    flexDirection: isCol ? "row" : "column",
-    justifyContent: "center",
-    alignItems: "center",
-  };
 
   const ROW_STYLES = {
     width: `${size / divisionSize}px`,
     height: `${size / divisionSize}px`,
-    fontSize:
-      size > 200
-        ? `${(size - 50) / divisionSize}px`
-        : `${(size - 25) / divisionSize}px`,
+    fontSize: "6px",
     display: "flex",
     justifyContent: "center",
     alignItems: "flex-end",
   };
 
-  const COL_STYLES = {
-    width: "100%",
-    height: "100%",
-    flexGrow: 1,
-    display: "flex",
-    flexDirection: !isCol ? "row" : "column",
-    justifyContent: "flex-end",
-    alignItems: "center",
-    boxSizing: "border-box",
-  };
+  const COL_STYLES = {};
 
   return (
-    <div style={COLROW_STYLES}>
+    <div className={`colrow-container ${isCol ? "colrow-row" : "colrow-col"}`}>
       {arr.map((a, i) => {
         return (
-          <div key={i} style={COL_STYLES}>
+          <div className={isCol ? "col" : "row"} key={i}>
             {arrayToBlocks(a).map((b, j) => (
-              <div key={j} style={ROW_STYLES}>
+              <div className="number" key={j} style={ROW_STYLES}>
                 {b}
               </div>
             ))}

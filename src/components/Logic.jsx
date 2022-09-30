@@ -62,5 +62,5 @@ export default function Logic({ children, winBoard }) {
     win,
     size,
   });
-  return <div>{element}</div>;
+  return <>{element}</>;
 }
