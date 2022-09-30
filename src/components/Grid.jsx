@@ -1,28 +1,12 @@
 import Square from "./Square";
-import { colorTheme } from "../utils";
 
-export default function Grid({
-  winBoard,
-  size = 200,
-  rowNum = 3,
-  columnNum = 3,
-  board,
-  handleBoard,
-}) {
-  const ROW_STYLE = {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    width: "100%",
-    height: `${size / rowNum}px`,
-  };
-
+export default function Grid({ size = 200, rowNum = 3, board, handleBoard }) {
   return (
     <>
       <div className="grid">
         {board.map((arr, i) => {
           return (
-            <div key={i} className={"grid-row"} style={ROW_STYLE}>
+            <div key={i} className={"grid-row"}>
               {arr.map((square, j) => {
                 return (
                   <Square

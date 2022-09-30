@@ -6,21 +6,24 @@ html {
   --marked-color: #bbb;
   --accent-color: #008080;
   --black-color: #0a0a0a;
+  font-size: 16px;
 }
+
 *,
 *:before,
 *:after {
   box-sizing: inherit;
 }
-.App {
-  text-align: center;
-}
+
 .colrow-container {
   background-color: var(--main-color);
   display: flex;
 }
 .colrow-row {
   flex-direction: row;
+  flex-shrink: 0;
+  flex-grow: 0;
+  width: 24rem;
 }
 .colrow-col {
   flex-direction: column;
@@ -28,7 +31,7 @@ html {
 
 .col {
   border: #007070 0.1px solid;
-  width: 0.6rem;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -38,7 +41,8 @@ html {
 }
 .row {
   border: #007070 0.1px solid;
-  height: 0.6rem;
+  height: 100%;
+  min-width: 2rem;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -50,9 +54,7 @@ html {
 .board {
   background-color: var(--accent-color);
   color: var(--white-color);
-  width: 250px;
-  height: 250px;
-  /* border: 10px white solid; */
+  border: 0.5rem white solid;
 }
 
 .board-top-column {
@@ -63,29 +65,64 @@ html {
   display: flex;
   justify-content: flex-end;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.game-container {
+  margin: 4rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.App-header {
+  background-color: #282c34;
+  height: 100vh;
   font-size: calc(10px + 2vmin);
 }
 .number {
-  padding: 2px;
-  font-size: 0.3rem;
+  font-size: 0.7rem;
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  width: 0.8rem;
+  height: 0.8rem;
+}
+
+.row .number {
+  margin: 0 0.3rem;
+}
+
+.row .number:first-child {
+  margin-left: 3rem;
+}
+.col .number:first-child {
+  margin-top: 3rem;
+}
+
+.col .number {
+  margin: 0.2rem 0;
+}
+
+.grid {
+  background-color: var(--middle-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 24rem;
+  height: 24rem;
+}
+.grid-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }
 .square {
-  width: 0.6rem;
-  height: 0.6rem;
+  width: 100%;
+  height: 100%;
   background-color: var(--middle-color);
-  border: var(--black-color) solid 0.1px;
-  box-sizing: "border-box";
+  border: var(--black-color) solid 0.01rem;
 }
 .marked {
   background-color: var(--marked-color);
@@ -102,19 +139,22 @@ html {
 .right {
   border-right-color: var(--accent-color);
 }
-.grid {
-  background-color: var(--middle-color);
-  display: "flex";
-  justify-content: "center";
-  align-items: "center";
-  flex-direction: "column";
-  /* width: 0.6rem;
-  height: 0.6rem; */
+
+@media screen and (max-width: 560px) {
+  .game-container {
+    margin: 0;
+    transform: scale(0.5) translateY(-12rem);
+    align-self: flex-start;
+  }
 }
-/* .grid-row {
-  display: "flex";
-  justify-content: "center";
-  align-items: "center";
-  width: 192px;
-  height: 0.6rem;
-} */
+
+@media screen and (max-width: 300px) {
+  .game-container {
+    margin: 0;
+    transform: scale(0.4) translateY(-20rem);
+    align-self: flex-start;
+  }
+  .App-header {
+    height: 600px;
+  }
+}

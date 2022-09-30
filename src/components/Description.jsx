@@ -19,17 +19,20 @@ export default function Description({
       <div className="board-top-column">
         {/* <RulesDisplay size={size} win={win} /> */}
         {/* reemplazar esto de abajo!!! */}
-        <h8
+        <h6
           style={{
+            fontSize: "3rem",
+            margin: "0",
             display: "flex",
             width: "100%",
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
+            backgroundColor: win ? "#00A0A0" : "#008080",
           }}
         >
           N
-        </h8>
+        </h6>
         <ColRow
           size={size}
           arr={winColumn}

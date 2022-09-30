@@ -1,10 +1,8 @@
 export default function Square({
-  gridSize,
   marked,
   column,
   handleBoard,
   row,
-  resolution,
   top,
   right,
   bottom,
@@ -13,9 +11,9 @@ export default function Square({
   return (
     <div
       onClick={() => handleBoard(row, column)}
-      className={`square ${marked ? "marked" : null} ${top ? "top" : null} ${
-        bottom ? "bot" : null
-      } ${left ? "left" : null} ${right ? "right" : null}`}
+      className={`square${marked ? " marked" : ""}${top ? " top" : ""}${
+        bottom ? " bot" : ""
+      }${left ? " left" : ""}${right ? " right" : ""}`}
     ></div>
   );
 }
