@@ -1,17 +1,26 @@
 import "./App.css";
 import Description from "./components/Description";
 import Logic from "./components/Logic";
-import { dog } from "./NonogramTest";
+import MyAppBar from "./components/MyAppBar";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { treasure as test } from "./NonogramTest";
+
+const theme = createTheme({ palette: { primary: { main: "#088" } } });
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <Logic winBoard={dog}>
-          <Description />
-        </Logic>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <div className="App">
+        <header className="App-header">
+          <MyAppBar />
+          <div className="game-container">
+            <Logic winBoard={test}>
+              <Description />
+            </Logic>
+          </div>
+        </header>
+      </div>
+    </ThemeProvider>
   );
 }
 

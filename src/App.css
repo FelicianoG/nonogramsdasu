@@ -1,37 +1,160 @@
-.App {
+html {
+  box-sizing: border-box;
+  --main-color: #666;
+  --middle-color: #444;
+  --white-color: #eee;
+  --marked-color: #bbb;
+  --accent-color: #008080;
+  --black-color: #0a0a0a;
+  font-size: 16px;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+.colrow-container {
+  background-color: var(--main-color);
+  display: flex;
+}
+.colrow-row {
+  flex-direction: row;
+  flex-shrink: 0;
+  flex-grow: 0;
+  width: 24rem;
+}
+.colrow-col {
+  flex-direction: column;
+}
+
+.col {
+  border: #007070 0.1px solid;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  box-sizing: border-box;
+  text-align: center;
+}
+.row {
+  border: #007070 0.1px solid;
+  height: 100%;
+  min-width: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  box-sizing: border-box;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.board {
+  background-color: var(--accent-color);
+  color: var(--white-color);
+  border: 0.5rem white solid;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.board-top-column {
+  display: flex;
+  justify-content: flex-end;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.board-bot-column {
+  display: flex;
+  justify-content: flex-end;
+}
+.game-container {
+  margin: 4rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.App-header {
+  background-color: #282c34;
+  height: 100vh;
   font-size: calc(10px + 2vmin);
 }
-
-.App-link {
-  color: #61dafb;
+.number {
+  font-size: 0.7rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 0.8rem;
+  height: 0.8rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.row .number {
+  margin: 0 0.3rem;
+}
+
+.row .number:first-child {
+  margin-left: 3rem;
+}
+.col .number:first-child {
+  margin-top: 3rem;
+}
+
+.col .number {
+  margin: 0.2rem 0;
+}
+
+.grid {
+  background-color: var(--middle-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 24rem;
+  height: 24rem;
+}
+.grid-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.square {
+  width: 100%;
+  height: 100%;
+  background-color: var(--middle-color);
+  border: var(--black-color) solid 0.01rem;
+}
+.marked {
+  background-color: var(--marked-color);
+}
+.top {
+  border-top-color: var(--accent-color);
+}
+.bot {
+  border-bottom-color: var(--accent-color);
+}
+.left {
+  border-left-color: var(--accent-color);
+}
+.right {
+  border-right-color: var(--accent-color);
+}
+
+@media screen and (max-width: 560px) {
+  .game-container {
+    margin: 0;
+    transform: scale(0.5) translateY(-12rem);
+    align-self: flex-start;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@media screen and (max-width: 300px) {
+  .game-container {
+    margin: 0;
+    transform: scale(0.4) translateY(-20rem);
+    align-self: flex-start;
+  }
+  .App-header {
+    height: 600px;
   }
 }
