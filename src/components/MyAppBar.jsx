@@ -3,10 +3,8 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
 
-export default function MyAppBar() {
+export default function MyAppBar({ setModal }) {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -22,7 +20,16 @@ export default function MyAppBar() {
           >
             nonodachi
           </Typography>
-          <Button color="inherit">Help</Button>
+          <Button
+            onClick={() => {
+              setModal((prev) => {
+                return !prev;
+              });
+            }}
+            color="inherit"
+          >
+            Help
+          </Button>
         </Toolbar>
       </AppBar>
     </Box>

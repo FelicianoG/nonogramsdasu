@@ -14,6 +14,10 @@ html {
 *:after {
   box-sizing: inherit;
 }
+body {
+  background-color: #282c34;
+  min-height: 800px;
+}
 
 .colrow-container {
   background-color: var(--main-color);
@@ -71,6 +75,7 @@ html {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background-color: #282c34;
 }
 
 .App-header {
@@ -146,6 +151,9 @@ html {
     transform: scale(0.5) translateY(-12rem);
     align-self: flex-start;
   }
+  body {
+    min-height: 500px;
+  }
 }
 
 @media screen and (max-width: 300px) {
@@ -156,5 +164,8 @@ html {
   }
   .App-header {
     height: 600px;
+  }
+  body {
+    min-height: 100px;
   }
 }

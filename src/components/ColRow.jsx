@@ -8,15 +8,7 @@ export default function ColRow({ arr, isCol, columnNum, rowNum }) {
         return (
           <div className={isCol ? "col" : "row"} key={i}>
             {arrayToBlocks(a).map((b, j) => (
-              <div
-                className="number"
-                style={{
-                  fontSize: `${0.5 + 12 / (columnNum * rowNum)}em`,
-                  width: `${0.5 + 12 / (columnNum * rowNum)}em`,
-                  height: `${0.5 + 12 / (columnNum * rowNum)}em`,
-                }}
-                key={j}
-              >
+              <div className="number" key={j}>
                 {b}
               </div>
             ))}
