@@ -11,7 +11,9 @@ export default function ColRow({ arr, isCol, columnNum, rowNum }) {
               <div
                 className="number"
                 style={{
-                  fontSize: `${0.6 + 2 / (columnNum * rowNum)}em`,
+                  fontSize: `${0.5 + 12 / (columnNum * rowNum)}em`,
+                  width: `${0.5 + 12 / (columnNum * rowNum)}em`,
+                  height: `${0.5 + 12 / (columnNum * rowNum)}em`,
                 }}
                 key={j}
               >
