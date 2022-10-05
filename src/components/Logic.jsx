@@ -13,7 +13,7 @@ export default function Logic({ children, winBoard }) {
     dimension.push([...initialColumns]);
   }
 
-  const [board, setBoard] = useState([]);
+  const [board, setBoard] = useState(dimension);
   console.log(board);
   const win = JSON.stringify(board) === JSON.stringify(winBoard);
 
