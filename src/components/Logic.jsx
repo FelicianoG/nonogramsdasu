@@ -1,5 +1,6 @@
 import { cloneElement, useState } from "react";
 import arrDenester from "../utils";
+import Switch from "./Switch";
 
 export default function Logic({ children, winBoard }) {
   const initialColumns = [];
@@ -41,5 +42,9 @@ export default function Logic({ children, winBoard }) {
     winBoard,
     win,
   });
-  return <>{element}</>;
+  return (
+    <>
+      {element} <Switch handleClick={setTemp} />
+    </>
+  );
 }
