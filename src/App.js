@@ -7,7 +7,7 @@ import { createPortal } from "react-dom";
 import { useState } from "react";
 import HelpModal from "./components/HelpModal";
 import Switch from "./components/Switch";
-import { shades as test } from "./NonogramTest";
+import { gato as test } from "./NonogramTest";
 
 const theme = createTheme({ palette: { primary: { main: "#088" } } });
 
@@ -21,9 +21,8 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      {modal ? portalito : null}
-
       <div className="App">
+        {modal ? portalito : null}
         <header className="App-header">
           <MyAppBar setModal={setModal} />
           <div className="game-container">

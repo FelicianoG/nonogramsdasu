@@ -3,6 +3,15 @@ import arrDenester, { arrNegative } from "../utils";
 import Switch from "./Switch";
 
 export default function Logic({ children, winBoard, setWinBoard }) {
+  useEffect(() => {
+    window.addEventListener("keypress", (e) => {
+      if (e.key === "n") {
+        setBoard((prev) => arrNegative(prev));
+        setWinBoard((prev) => arrNegative(prev));
+      }
+    });
+  }, []);
+
   const initialColumns = [];
   const rowNum = winBoard.length;
   const columnNum = winBoard[0].length;
