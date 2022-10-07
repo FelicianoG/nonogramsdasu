@@ -1,4 +1,4 @@
-import { cloneElement, useState } from "react";
+import { cloneElement, useState, useEffect } from "react";
 import arrDenester from "../utils";
 import Switch from "./Switch";
 
@@ -15,28 +15,73 @@ export default function Logic({ children, winBoard }) {
   }
 
   const [board, setBoard] = useState(dimension);
-  console.log(board);
+  const [crosses, setCrosses] = useState(dimension);
+
+  // console.log(board);
   const win = JSON.stringify(board) === JSON.stringify(winBoard);
 
-  let [temp, setTemp] = useState(true);
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "e") {
-      setTemp(false);
-    } else if (e.key === "d") {
-      setTemp(true);
-    }
-  });
+  const [temp, setTemp] = useState(true);
+  const [tempCross, setTempCross] = useState(true);
+  const [cross, setCross] = useState(false);
 
-  function handleBoard(row, column) {
-    setBoard((prev) => {
-      const arr = arrDenester(prev);
-      arr[row][column] = temp;
-      return arrDenester([...arr]);
-    });
+  function handleBoardClick(row, column, e) {
+    setTemp(!e.target.classList.contains("marked"));
+    setTempCross(!e.target.classList.contains("crossed"));
+    if (cross && !e.target.classList.contains("marked")) {
+      setCrosses((prev) => {
+        const arr = arrDenester(prev);
+        arr[row][column] = !prev[row][column];
+        return arrDenester([...arr]);
+      });
+    } else if (!cross && !e.target.classList.contains("crossed")) {
+      setBoard((prev) => {
+        const arr = arrDenester(prev);
+        arr[row][column] = !prev[row][column];
+        return arrDenester([...arr]);
+      });
+    }
+  }
+
+  function handleBoardDrag(row, column, e) {
+    if (cross && !e.target.classList.contains("marked")) {
+      if (e) {
+        if (e.buttons === 1) {
+          setCrosses((prev) => {
+            const arr = arrDenester(prev);
+            arr[row][column] = tempCross;
+            return arrDenester([...arr]);
+          });
+        }
+      } else {
+        setCrosses((prev) => {
+          const arr = arrDenester(prev);
+          arr[row][column] = tempCross;
+          return arrDenester([...arr]);
+        });
+      }
+    } else if (!cross && !e.target.classList.contains("crossed")) {
+      if (e) {
+        if (e.buttons === 1) {
+          setBoard((prev) => {
+            const arr = arrDenester(prev);
+            arr[row][column] = temp;
+            return arrDenester([...arr]);
+          });
+        }
+      } else {
+        setBoard((prev) => {
+          const arr = arrDenester(prev);
+          arr[row][column] = temp;
+          return arrDenester([...arr]);
+        });
+      }
+    }
   }
   const element = cloneElement(children, {
-    handleBoard,
+    handleBoardClick,
+    handleBoardDrag,
     board,
+    crosses,
     rowNum,
     columnNum,
     winBoard,
@@ -44,7 +89,8 @@ export default function Logic({ children, winBoard }) {
   });
   return (
     <>
-      {element} <Switch handleClick={setTemp} />
+      {element}
+      <Switch setCross={setCross} />
     </>
   );
 }

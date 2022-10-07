@@ -8,7 +8,9 @@ export default function Description({
   winBoard,
   size = 200,
   board,
-  handleBoard,
+  crosses,
+  handleBoardClick,
+  handleBoardDrag,
   rowNum,
   columnNum,
 }) {
@@ -20,6 +22,9 @@ export default function Description({
         {/* <RulesDisplay size={size} win={win} /> */}
         {/* reemplazar esto de abajo!!! */}
         <h6
+          onClick={() => {
+            console.log(board);
+          }}
           style={{
             fontSize: "3rem",
             margin: "0",
@@ -51,7 +56,9 @@ export default function Description({
         />
         <Grid
           board={board}
-          handleBoard={handleBoard}
+          crosses={crosses}
+          handleBoardClick={handleBoardClick}
+          handleBoardDrag={handleBoardDrag}
           size={size}
           winBoard={winBoard}
           rowNum={rowNum}

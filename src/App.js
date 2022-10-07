@@ -3,11 +3,11 @@ import Description from "./components/Description";
 import Logic from "./components/Logic";
 import MyAppBar from "./components/MyAppBar";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { dog as test } from "./NonogramTest";
 import { createPortal } from "react-dom";
 import { useState } from "react";
 import HelpModal from "./components/HelpModal";
 import Switch from "./components/Switch";
+import { kirby as test } from "./NonogramTest";
 
 const theme = createTheme({ palette: { primary: { main: "#088" } } });
 

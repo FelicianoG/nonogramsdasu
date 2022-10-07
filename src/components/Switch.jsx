@@ -51,12 +51,12 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   },
 }));
 
-export default function CustomizedSwitches({ handleClick }) {
+export default function CustomizedSwitches({ setCross }) {
   return (
     <FormGroup>
       <MaterialUISwitch
         onClick={() => {
-          handleClick((prev) => !prev);
+          setCross((prev) => !prev);
         }}
         sx={{ m: 6 }}
         defaultChecked

@@ -1,6 +1,13 @@
 import Square from "./Square";
 
-export default function Grid({ size = 200, rowNum = 3, board, handleBoard }) {
+export default function Grid({
+  size = 200,
+  rowNum = 3,
+  board,
+  crosses,
+  handleBoardClick,
+  handleBoardDrag,
+}) {
   return (
     <>
       <div className="grid">
@@ -17,8 +24,10 @@ export default function Grid({ size = 200, rowNum = 3, board, handleBoard }) {
                     top={i % 5 === 0 && i !== 0}
                     left={j % 5 === 0 && j !== 0}
                     column={j}
-                    handleBoard={handleBoard}
+                    handleBoardClick={handleBoardClick}
+                    handleBoardDrag={handleBoardDrag}
                     marked={board[i][j]}
+                    crossed={crosses[i][j]}
                   />
                 );
               })}
