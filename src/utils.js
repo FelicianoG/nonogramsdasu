@@ -62,3 +62,13 @@ export const colorTheme = {
   accent: "#008080",
   black: "#0A0A0A",
 };
+
+export function arrNegative(nestedArr) {
+  let arr = JSON.parse(JSON.stringify([...nestedArr]));
+  arr.map((a, i) => {
+    a.map((element, j) => {
+      arr[i][j] = !nestedArr[i][j];
+    });
+  });
+  return arr;
+}

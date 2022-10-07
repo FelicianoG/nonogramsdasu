@@ -7,16 +7,18 @@ import { createPortal } from "react-dom";
 import { useState } from "react";
 import HelpModal from "./components/HelpModal";
 import Switch from "./components/Switch";
-import { kirby as test } from "./NonogramTest";
+import { shades as test } from "./NonogramTest";
 
 const theme = createTheme({ palette: { primary: { main: "#088" } } });
 
 function App() {
+  const [winBoard, setWinBoard] = useState(test);
   const [modal, setModal] = useState(false);
   const portalito = createPortal(
     <HelpModal setModal={setModal} />,
     document.getElementById("modal")
   );
+
   return (
     <ThemeProvider theme={theme}>
       {modal ? portalito : null}
@@ -25,7 +27,7 @@ function App() {
         <header className="App-header">
           <MyAppBar setModal={setModal} />
           <div className="game-container">
-            <Logic winBoard={test}>
+            <Logic winBoard={winBoard} setWinBoard={setWinBoard}>
               <Description />
             </Logic>
           </div>

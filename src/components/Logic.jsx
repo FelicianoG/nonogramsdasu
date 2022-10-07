@@ -1,8 +1,8 @@
 import { cloneElement, useState, useEffect } from "react";
-import arrDenester from "../utils";
+import arrDenester, { arrNegative } from "../utils";
 import Switch from "./Switch";
 
-export default function Logic({ children, winBoard }) {
+export default function Logic({ children, winBoard, setWinBoard }) {
   const initialColumns = [];
   const rowNum = winBoard.length;
   const columnNum = winBoard[0].length;
@@ -87,10 +87,17 @@ export default function Logic({ children, winBoard }) {
     winBoard,
     win,
   });
+
+  const makeNegative = (e) => {
+    setBoard(arrNegative(board));
+    setWinBoard(arrNegative(winBoard));
+  };
+
   return (
     <>
       {element}
       <Switch setCross={setCross} />
+      <button onClick={(e) => makeNegative()}>Negative</button>
     </>
   );
 }
