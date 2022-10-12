@@ -10,6 +10,7 @@ export default function Logic({ children, winBoard, setWinBoard }) {
         setWinBoard((prev) => arrNegative(prev));
       }
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const initialColumns = [];

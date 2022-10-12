@@ -68,7 +68,9 @@ export function arrNegative(nestedArr) {
   arr.map((a, i) => {
     a.map((element, j) => {
       arr[i][j] = !nestedArr[i][j];
+      return i;
     });
+    return i;
   });
   return arr;
 }
