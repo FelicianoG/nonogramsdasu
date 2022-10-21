@@ -1,5 +1,3 @@
-import React from "react";
-
 const MODAL_STYLE = {
   backgroundColor: "rgba(0,0,0,.5)",
   padding: "20px",

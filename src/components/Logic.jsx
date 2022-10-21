@@ -1,18 +1,8 @@
-import { cloneElement, useState, useEffect } from "react";
+import { cloneElement, useState } from "react";
 import arrDenester, { arrNegative } from "../utils";
 import Switch from "./Switch";
 
-export default function Logic({ children, winBoard, setWinBoard }) {
-  useEffect(() => {
-    window.addEventListener("keypress", (e) => {
-      if (e.key === "n") {
-        setBoard((prev) => arrNegative(prev));
-        setWinBoard((prev) => arrNegative(prev));
-      }
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
+export default function Logic({ children, drawMode, drawModeHandler, winBoard, setWinBoard }) {
   const initialColumns = [];
   const rowNum = winBoard.length;
   const columnNum = winBoard[0].length;
@@ -95,6 +85,7 @@ export default function Logic({ children, winBoard, setWinBoard }) {
     rowNum,
     columnNum,
     winBoard,
+    drawMode,
     win,
   });
 
@@ -108,6 +99,7 @@ export default function Logic({ children, winBoard, setWinBoard }) {
       {element}
       <Switch setCross={setCross} />
       <button onClick={(e) => makeNegative()}>Negative</button>
+      <button onClick={(e) => drawModeHandler()}>Draw Mode</button>
     </>
   );
 }

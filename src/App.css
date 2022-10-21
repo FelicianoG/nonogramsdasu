@@ -5,6 +5,7 @@ html {
   --white-color: #eee;
   --marked-color: #bbb;
   --accent-color: #008080;
+  --accent-color-two: #802b00;
   --black-color: #0a0a0a;
   font-size: 16px;
 }
@@ -36,6 +37,7 @@ body {
 .col {
   border: #007070 0.1px solid;
   width: 100%;
+  min-height: 150px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -47,7 +49,7 @@ body {
 .row {
   border: #007070 0.1px solid;
   height: 100%;
-  min-width: 2rem;
+  min-width: 150px;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -55,9 +57,18 @@ body {
   box-sizing: border-box;
   text-align: center;
 }
+.second-color-border {
+  border-color: #701800;
+}
+
+.color-one {
+  background-color: var(--accent-color);
+}
+.color-two {
+  background-color: var(--accent-color-two);
+}
 
 .board {
-  background-color: var(--accent-color);
   color: var(--white-color);
   border: 0.5rem white solid;
 }
@@ -81,7 +92,7 @@ body {
 
 .App-header {
   background-color: #282c34;
-  height: 100vh;
+  height: fit-content;
   font-size: calc(10px + 2vmin);
 }
 .number {
@@ -134,6 +145,7 @@ body {
 .marked {
   background-color: var(--marked-color);
 }
+
 .top {
   border-top-color: var(--accent-color);
 }
@@ -145,6 +157,19 @@ body {
 }
 .right {
   border-right-color: var(--accent-color);
+}
+
+.top-two {
+  border-top-color: var(--accent-color-two);
+}
+.bot-two {
+  border-bottom-color: var(--accent-color-two);
+}
+.left-two {
+  border-left-color: var(--accent-color-two);
+}
+.right-two {
+  border-right-color: var(--accent-color-two);
 }
 
 @media screen and (max-width: 560px) {

@@ -1,8 +1,10 @@
 import { styled } from "@mui/material/styles";
 import FormGroup from "@mui/material/FormGroup";
 import Switch from "@mui/material/Switch";
+import { useContext } from "react";
+import ColorContext from "../context/ColorContext.js";
 
-const MaterialUISwitch = styled(Switch)(({ theme }) => ({
+const MaterialUISwitch = styled(Switch)(({ theme, accentColor }) => ({
   width: 62,
   height: 34,
   padding: 7,
@@ -20,12 +22,12 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
       },
       "& + .MuiSwitch-track": {
         opacity: 0.5,
-        backgroundColor: theme.palette.mode === "dark" ? "#8796A5" : "#005050",
+        backgroundColor: theme.palette.mode === "dark" ? "#8796A5" : "#505050",
       },
     },
   },
   "& .MuiSwitch-thumb": {
-    backgroundColor: theme.palette.mode === "dark" ? "#003892" : "#008080",
+    backgroundColor: theme.palette.mode === "dark" ? "#003892" : accentColor,
     width: 32,
     height: 32,
     "&:before": {
@@ -44,15 +46,18 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   },
   "& .MuiSwitch-track": {
     opacity: 1,
-    backgroundColor: theme.palette.mode === "dark" ? "#8796A5" : "#005050",
+    backgroundColor: theme.palette.mode === "dark" ? "#8796A5" : "#505050",
     borderRadius: 20 / 2,
   },
 }));
 
 export default function CustomizedSwitches({ setCross }) {
+  const contextValue = useContext(ColorContext);
+
   return (
     <FormGroup>
       <MaterialUISwitch
+        accentColor={contextValue.accentColor}
         onClick={() => {
           setCross((prev) => !prev);
         }}

@@ -3,9 +3,15 @@ import Grid from "./Grid";
 import ColRow from "./ColRow";
 // eslint-disable-next-line no-unused-vars
 import RulesDisplay from "./RulesDisplay";
+import { useContext } from "react";
+import ContextValue from "../context/ColorContext.js";
 
-export default function Description({ win, winBoard, size = 200, board, crosses, handleBoardClick, handleBoardDrag, rowNum, columnNum }) {
-  const [winRow, winColumn] = rowColumnMaker(winBoard);
+export default function Description({ win, drawMode, winBoard, size = 200, board, crosses, handleBoardClick, handleBoardDrag, rowNum, columnNum }) {
+  const { accentColor } = useContext(ContextValue);
+  const [winRow, winColumn] = rowColumnMaker(drawMode ? board : winBoard);
+
+  const winColor = win ? "#00A0A0" : "#008080";
+  const squareColor = drawMode ? accentColor : winColor;
 
   return (
     <div className="board">
@@ -24,10 +30,10 @@ export default function Description({ win, winBoard, size = 200, board, crosses,
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
-            backgroundColor: win ? "#00A0A0" : "#008080",
+            backgroundColor: squareColor,
           }}
         >
-          N
+          {drawMode ? "D" : "N"}
         </h6>
         <ColRow size={size} arr={winColumn} isCol={true} rowNum={rowNum} columnNum={columnNum} />
       </div>
