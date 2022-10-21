@@ -1,8 +1,11 @@
-import { cloneElement, useState } from "react";
+import { cloneElement, useState, useContext } from "react";
+import ContextValue from "../context/ColorContext.js";
 import arrDenester, { arrNegative } from "../utils";
 import Switch from "./Switch";
 
-export default function Logic({ children, drawMode, drawModeHandler, winBoard, setWinBoard }) {
+export default function Logic({ children, drawModeHandler, winBoard, setWinBoard }) {
+  const { drawMode, accentColor } = useContext(ContextValue);
+
   const initialColumns = [];
   const rowNum = winBoard.length;
   const columnNum = winBoard[0].length;
@@ -97,7 +100,7 @@ export default function Logic({ children, drawMode, drawModeHandler, winBoard, s
   return (
     <>
       {element}
-      <Switch setCross={setCross} />
+      <Switch setCross={setCross} color={accentColor} />
       <button onClick={(e) => makeNegative()}>Negative</button>
       <button onClick={(e) => drawModeHandler()}>Draw Mode</button>
     </>

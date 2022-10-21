@@ -54,15 +54,6 @@ export function arrayToBlocks(arr) {
   return newArr;
 }
 
-export const colorTheme = {
-  main: "#666",
-  middle: "#444",
-  white: "#EEE",
-  marked: "#BBB",
-  accent: "#008080",
-  black: "#0A0A0A",
-};
-
 export function arrNegative(nestedArr) {
   let arr = JSON.parse(JSON.stringify([...nestedArr]));
   arr.map((a, i) => {

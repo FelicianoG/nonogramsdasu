@@ -8,9 +8,18 @@ import HelpModal from "./HelpModal";
 import nonogramTest from "../NonogramTest";
 import { useParams } from "react-router-dom";
 import ColorContext from "../context/ColorContext";
+import CryptoJS from "crypto-js";
 
 function Game() {
   let { id } = useParams();
+  let decrypted = false;
+
+  if (id) {
+    id = id.replace(/feli/g, "/");
+    let bytes = CryptoJS.AES.decrypt(id, "secret key 123");
+    decrypted = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+    console.log(decrypted);
+  }
 
   const [drawMode, setDrawMode] = useState(false);
   function drawModeHandler() {
@@ -21,7 +30,7 @@ function Game() {
 
   const theme = createTheme({ palette: { primary: { main: accentColor } } });
 
-  const [winBoard, setWinBoard] = useState(id ? nonogramTest[id] : nonogramTest.dog);
+  const [winBoard, setWinBoard] = useState(decrypted ? decrypted : nonogramTest.dog);
   const [modal, setModal] = useState(false);
   const portalito = createPortal(<HelpModal setModal={setModal} />, document.getElementById("modal"));
 

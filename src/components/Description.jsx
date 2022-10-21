@@ -1,10 +1,9 @@
 import { rowColumnMaker } from "../utils";
 import Grid from "./Grid";
 import ColRow from "./ColRow";
-// eslint-disable-next-line no-unused-vars
-import RulesDisplay from "./RulesDisplay";
 import { useContext } from "react";
 import ContextValue from "../context/ColorContext.js";
+import CryptoJS from "crypto-js";
 
 export default function Description({ win, drawMode, winBoard, size = 200, board, crosses, handleBoardClick, handleBoardDrag, rowNum, columnNum }) {
   const { accentColor } = useContext(ContextValue);
@@ -13,15 +12,18 @@ export default function Description({ win, drawMode, winBoard, size = 200, board
   const winColor = win ? "#00A0A0" : "#008080";
   const squareColor = drawMode ? accentColor : winColor;
 
+  function shareHandler(arr) {
+    let ciphertext = CryptoJS.AES.encrypt(JSON.stringify(arr), "secret key 123").toString();
+    ciphertext = ciphertext.replace(/\//g, "feli");
+    console.log(ciphertext);
+    navigator.clipboard.writeText("localhost:3000/user/" + ciphertext);
+  }
+
   return (
     <div className="board">
       <div className="board-top-column">
-        {/* <RulesDisplay size={size} win={win} /> */}
-        {/* reemplazar esto de abajo!!! */}
         <h6
-          onClick={() => {
-            console.log(board);
-          }}
+          onClick={() => shareHandler(board)}
           style={{
             fontSize: "3rem",
             margin: "0",
