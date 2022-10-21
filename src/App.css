@@ -71,6 +71,7 @@ body {
 .board {
   color: var(--white-color);
   border: 0.5rem white solid;
+  user-select: none;
 }
 
 .board-top-column {
